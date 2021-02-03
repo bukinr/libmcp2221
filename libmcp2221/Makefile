@@ -60,6 +60,12 @@ WINOBJS=$(SOURCES:win/%.rc=$(OBJ_DIR)/%.o)
 CPPOBJS=$(WINOBJS:%.cpp=$(OBJ_DIR)/%.o)
 OBJECTS=$(CPPOBJS:%.c=$(OBJ_DIR)/%.o)
 
+install:
+	cp bin/libmcp2221.a /usr/local/lib/
+	cp bin/libmcp2221.so /usr/local/lib/
+	mkdir -p /usr/local/include/libmcp2221/
+	cp libmcp2221.h /usr/local/include/libmcp2221/
+
 all: dirs $(SOURCES) $(EXECUTABLE)
 
 $(EXECUTABLE): $(OBJECTS)
