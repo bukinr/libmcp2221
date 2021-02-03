@@ -42,7 +42,7 @@ ifeq ($(OS),Windows_NT)
 	NULLOUT=nul
 else
 	# udev is for the HIDRAW version of HIDAPI and usb-1.0 is for the libusb version
-	LDLIBS += -ludev -lusb-1.0
+	LDLIBS += -L/usr/local/lib -lusb
 	EXECUTABLE=$(PROJECT).so
 	NULLOUT=/dev/null
 endif
@@ -52,8 +52,8 @@ ARCHIVE=$(PROJECT).a
 OBJ_DIR=obj
 BIN_DIR=bin
 
-CC=gcc
-CXX=gcc
+CC=cc
+CXX=cc
 WINDRES=windres
 
 WINOBJS=$(SOURCES:win/%.rc=$(OBJ_DIR)/%.o)
